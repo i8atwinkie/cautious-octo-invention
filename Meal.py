@@ -2,8 +2,8 @@ import Ingredient
 import sqlite3
 
 class Meal: 
-    def __init__(self, name = '', ingredients = []):
-        self.id = None
+    def __init__(self, name = '', ingredients = [], id = None):
+        self.id = id
         self.name = name
         self.ingredients = ingredients
     
@@ -19,8 +19,6 @@ class Meal:
             price +=i.getPrice()
         return price
 
-    def clearMeal(self):
-        del self.ingredients [:]
-        self.name = ''
-        self.id
+    def setId(self, id):
+        self.id = id
 
