@@ -1,3 +1,3 @@
-class Meals: 
+class Meal: 
     ingredients = []
 
