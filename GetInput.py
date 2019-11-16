@@ -2,12 +2,22 @@ from Meal import Meal
 from ShoppingList import ShoppingList
 from MealService import MealService
 from Ingredient import Ingredient
+from ShoppingListService import ShoppingListService
+
 isIngredient = False
 userInput = True
 myList = ShoppingList()
 total = 0
 canQuit = False
 
+loadList = input('Would you like to load your last shopping list? (y,n)')
+if (loadList == 'y' or loadList == 'Y'):
+    myList = ShoppingListService.get()
+    print('Shopping List:')
+    for ingredient in myList.getIngredients():
+        print ( str(ingredient.name) + ' $' + f'{ingredient.price:.2f}')
+    print ('Total $' + str(myList.getTotalPrice()))
+    print('You can now add more to your shopping list.')
 
 while (userInput == True):
     if (isIngredient == False):
@@ -67,4 +77,10 @@ while (userInput == True):
                 print ( str(ingredient.name) + ' $' + f'{ingredient.price:.2f}')
                 total = total + ingredient.price
             print ('Total $' + f'{total:.2f}')
+
             
+            
+ShoppingListService.delete()
+ShoppingListService.save(myList)
+
+print('Saved shopping list.')
