@@ -2,8 +2,8 @@ import Ingredient
 
 class Meal: 
 
-    def __init__(self):
-        self.__ingredients = []
+    def __init__(self, ingredients = []):
+        self.__ingredients = ingredients
     
     def getMealList(self):
         return self.__ingredients
@@ -14,7 +14,5 @@ class Meal:
     def getPrice(self):
         price = 0
         for i in self.__ingredients:
-            price +=i.getPrice
+            price +=i.getPrice()
         return price
-
-
