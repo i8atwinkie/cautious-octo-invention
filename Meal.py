@@ -1,8 +1,10 @@
 import Ingredient
+import sqlite3
 
 class Meal: 
 
-    def __init__(self, ingredients = []):
+    def __init__(self, name = '', ingredients = []):
+        self.name = name
         self.__ingredients = ingredients
     
     def getMealList(self):
@@ -16,3 +18,11 @@ class Meal:
         for i in self.__ingredients:
             price +=i.getPrice()
         return price
+
+    def save(self):        
+        conn = sqlite3.connect('database.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO meals VALUES (?)", [self.name])
+        conn.commit()
+        conn.close()
+
