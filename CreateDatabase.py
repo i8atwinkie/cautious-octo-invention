@@ -11,7 +11,7 @@ c.execute('''CREATE TABLE ingredients
 
 c.execute('DROP TABLE IF EXISTS meals')
 c.execute('''CREATE TABLE meals
-             (name text)''')
+             (id integer PRIMARY KEY, name text)''')
 
 c.execute('DROP TABLE IF EXISTS meal_ingredients')
 c.execute('''CREATE TABLE meal_ingredients
