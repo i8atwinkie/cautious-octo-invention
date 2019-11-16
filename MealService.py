@@ -12,14 +12,18 @@ class MealService:
         conn.commit()
         conn.close()
 
-        mealObjs = []
-        for meal in meals:
-            mealObjs.append(Meal(meal[1], 
-            IngredientService.findByMealId(meal[0]),
-            meal[0]))
+        return MealService.dataToObject(meals)
 
-        return mealObjs
+    @staticmethod
+    def findNameLike(search):
+        conn = sqlite3.connect('database.db')
+        c = conn.cursor()
+        c.execute("SELECT * FROM meals WHERE name LIKE ?", ("%" + search + "%",))
+        meals = c.fetchall()
+        conn.commit()
+        conn.close()
 
+        return MealService.dataToObject(meals)
 
     @staticmethod
     def save(meal):
@@ -41,4 +45,12 @@ class MealService:
                     conn.commit()
                     conn.close()
 
-                
+    @staticmethod
+    def dataToObject(mealsData):
+        mealObjs = []
+        for mealData in mealsData:
+            mealObjs.append(Meal(mealData[1], 
+            IngredientService.findByMealId(mealData[0]),
+            mealData[0]))
+
+        return mealObjs
