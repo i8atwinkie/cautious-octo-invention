@@ -5,15 +5,19 @@ conn = sqlite3.connect('database.db')
 c = conn.cursor()
 
 # Create table
+c.execute('DROP TABLE IF EXISTS ingredients')
 c.execute('''CREATE TABLE ingredients
              (name text, price real)''')
 
+c.execute('DROP TABLE IF EXISTS meals')
 c.execute('''CREATE TABLE meals
              (name text)''')
 
+c.execute('DROP TABLE IF EXISTS meal_ingredients')
 c.execute('''CREATE TABLE meal_ingredients
              (meal_id integer, ingredient_id integer)''')
 
+c.execute('DROP TABLE IF EXISTS shopping_list')
 c.execute('''CREATE TABLE shopping_list
              (ingredient_id integer)''')
 
