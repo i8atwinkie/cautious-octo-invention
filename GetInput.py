@@ -19,9 +19,12 @@ while (userInput == True):
         elif (x == '+'):
             MealService.save(mealInput)
             myList.addIngredientsToList(mealInput.getMealList())
+            mealInput.clearMeal()
             isIngredient = False
         else:
             userInput = False
             MealService.save(mealInput)
             myList.addIngredientsToList(mealInput.getMealList())
+            for ingredient in myList.getIngredients():
+                print (ingredient.name)
             
