@@ -44,5 +44,5 @@ class ShoppingList:
             self.addIngredientToList(ingredient)
 
     def addMealToList(self, meal):
-        for ingredient in meal:
+        for ingredient in meal.ingredients:
             self.shoppingListIngredients.append(ShoppingListIngredient(ingredient))
