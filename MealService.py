@@ -12,10 +12,13 @@ class MealService:
         conn.commit()
         conn.close()
 
+        mealObjs = []
         for meal in meals:
-            print(meal)
+            mealObjs.append(Meal(meal[1], 
+            IngredientService.findByMealId(meal[0]),
+            meal[0]))
 
-        return meals
+        return mealObjs
 
 
     @staticmethod
