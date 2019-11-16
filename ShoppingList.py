@@ -7,6 +7,12 @@ class ShoppingList:
         for shoppingListIngredient in self.shoppingListIngredients:
             self.shoppingListIngredients.append(ShoppingListIngredient(ingredient))
 
+    def getIngredients(self):
+        ingredients = []
+        for shoppingListIngredient in self.shoppingListIngredients:
+            ingredients.append(shoppingListIngredient.ingredient)
+        return ingredients
+
     def getTotalPrice(self):
         total = 0
         for shoppingListIngredient in shoppingListIngredients:
