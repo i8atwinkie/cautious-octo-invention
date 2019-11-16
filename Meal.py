@@ -22,3 +22,8 @@ class Meal:
     def setId(self, id):
         self.id = id
 
+    def clearMeal(self):
+        self.name = ''
+        del self.ingredients [:]
+        id = None
+
