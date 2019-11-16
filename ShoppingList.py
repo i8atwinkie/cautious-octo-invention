@@ -1,10 +1,10 @@
-import Meal
-import ShoppingListIngredient
+from Meal import Meal
+from ShoppingListIngredient import ShoppingListIngredient
 
 class ShoppingList:
     def __init__(self, ingredients = []):
         self.shoppingListIngredients = []
-        for shoppingListIngredient in shoppingListIngredients:
+        for shoppingListIngredient in self.shoppingListIngredients:
             self.shoppingListIngredients.append(ShoppingListIngredient(ingredient))
 
     def getTotalPrice(self):

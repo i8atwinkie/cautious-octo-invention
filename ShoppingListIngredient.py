@@ -1,4 +1,4 @@
 class ShoppingListIngredient:
-    def __init__(self, item):
+    def __init__(self, ingredient):
         self.ingredient = ingredient
-        self.checkedOff = false
+        self.checkedOff = False
