@@ -2,9 +2,11 @@ import sqlite3
 
 class Ingredient:
 
-    def __init__(self, price = 0):
-        self.id = None 
-        self.price = price
+
+    def __init__(self, name = "", price = 0):
+        self.__price = price
+        self.__name = name
+        self.id = None
     
     def getPrice(self):
         return self.price
