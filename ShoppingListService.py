@@ -30,3 +30,13 @@ class ShoppingListService:
             c.execute("INSERT INTO shopping_list VALUES (?, ?)", [shoppingListItem.ingredient.id, shoppingListItem.amount])
         conn.commit()
         conn.close()
+
+    @staticmethod
+    def delete():
+        conn = sqlite3.connect('database.db')
+        c = conn.cursor()
+        c.execute('DROP TABLE IF EXISTS shopping_list')
+        c.execute('''CREATE TABLE shopping_list
+             (ingredient_id integer, amount integer)''')
+        conn.commit()
+        conn.close()
