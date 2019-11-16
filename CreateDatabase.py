@@ -19,7 +19,7 @@ c.execute('''CREATE TABLE meal_ingredients
 
 c.execute('DROP TABLE IF EXISTS shopping_list')
 c.execute('''CREATE TABLE shopping_list
-             (ingredient_id integer)''')
+             (ingredient_id integer, amount integer)''')
 
 # Insert a row of data
 # c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
