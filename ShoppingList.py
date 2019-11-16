@@ -33,6 +33,10 @@ class ShoppingList:
     def addIngredientToList(self, ingredient):
         self.shoppingListIngredients.append(ShoppingListIngredient(ingredient))
 
+    def addIngredientsToList(self, ingredients):
+        for ingredient in ingredients:
+            self.addIngredientToList(ingredient)
+
     def addMealToList(self, meal):
         for ingredient in meal:
             self.shoppingListIngredients.append(ShoppingListIngredient(ingredient))
