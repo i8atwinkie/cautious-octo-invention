@@ -1,5 +1,10 @@
 import sqlite3
 
+from MealService import MealService
+
+from Meal import Meal
+from Ingredient import Ingredient
+
 conn = sqlite3.connect('database.db')
 
 c = conn.cursor()
@@ -19,10 +24,18 @@ c.execute('''CREATE TABLE meal_ingredients
 
 c.execute('DROP TABLE IF EXISTS shopping_list')
 c.execute('''CREATE TABLE shopping_list
-             (ingredient_id integer)''')
+             (ingredient_id integer, amount integer)''')
 
-# Insert a row of data
-# c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
+# SEED
+MealService.save(Meal('Potato', [
+    Ingredient('Ground', 50),
+    Ingredient('Water', 1)
+]))
+
+MealService.save(Meal('Pickle', [
+    Ingredient('Vinegar', 19.5),
+    Ingredient('Cucumber', 0.05)
+]))
 
 # Save (commit) the changes
 conn.commit()
