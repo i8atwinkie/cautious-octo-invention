@@ -23,7 +23,7 @@ class ShoppingList:
         total = 0
         for shoppingListIngredient in self.shoppingListIngredients:
             if shoppingListIngredient.checkedOff is True:
-                total += shoppingListIngredient.getPrice
+                total += shoppingListIngredient.ingredient.price * shoppingListIngredient.amount
         return total
 
     def getCheckedOffIngredients(self):
