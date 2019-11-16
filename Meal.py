@@ -3,7 +3,7 @@ import sqlite3
 
 class Meal: 
     def __init__(self, name = '', ingredients = []):
-        self.id = None, 
+        self.id = None
         self.name = name
         self.ingredients = ingredients
     
