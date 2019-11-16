@@ -1,5 +1,5 @@
 from Meal import Meal
-from Ingredient import Ingredient
+from IngredientService import IngredientService
 import sqlite3
 
 class MealService:
@@ -20,16 +20,22 @@ class MealService:
 
     @staticmethod
     def save(meal):
-            if meal.id is not None:
+            if meal.id is None:
                 conn = sqlite3.connect('database.db')
                 c = conn.cursor()
                 c.execute("INSERT INTO meals VALUES (?, ?)", [None, meal.name])
                 meal.id = c.lastrowid
-                
-                for ingredient in meal.ingredients:
-                    if ingredient.id is None:
-                        ingredient.save()
-                    c.execute("INSERT INTO meal_ingredients VALUES (?, ?)", [meal.id, ingredient.id])
 
                 conn.commit()
                 conn.close()
+                
+                for ingredient in meal.ingredients:
+                    if ingredient.id is None:
+                        IngredientService.save(ingredient)
+                    conn = sqlite3.connect('database.db')
+                    c = conn.cursor()
+                    c.execute("INSERT INTO meal_ingredients VALUES (?, ?, ?)", [None, meal.id, ingredient.id])
+                    conn.commit()
+                    conn.close()
+
+                
