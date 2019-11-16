@@ -19,3 +19,8 @@ class Meal:
             price +=i.getPrice()
         return price
 
+    def clearMeal(self):
+        del self.ingredients [:]
+        self.name = ''
+        self.id
+
