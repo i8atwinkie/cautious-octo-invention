@@ -37,7 +37,12 @@ class ShoppingList:
     #     shoppingListIngredient.checkOffIngredient()
 
     def addIngredientToList(self, ingredient):
-        self.shoppingListIngredients.append(ShoppingListIngredient(ingredient))
+        unique = True
+        for i in self.shoppingListIngredients:
+            if (ingredient.name == i.ingredient.name):
+                unique = False
+        if (unique == True):
+            self.shoppingListIngredients.append(ShoppingListIngredient(ingredient))
 
     def addIngredientsToList(self, ingredients):
         for ingredient in ingredients:
