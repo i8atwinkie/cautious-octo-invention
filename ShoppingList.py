@@ -16,7 +16,7 @@ class ShoppingList:
     def getTotalPrice(self):
         total = 0
         for shoppingListIngredient in self.shoppingListIngredients:
-            total += shoppingListIngredient.getPrice
+            total += shoppingListIngredient.ingredient.price * shoppingListIngredient.amount
         return total
 
     def getCheckedOffPrice(self):
