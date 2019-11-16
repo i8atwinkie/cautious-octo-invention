@@ -19,6 +19,17 @@ class IngredientService:
         return ingredients
 
     @staticmethod
+    def findById(id):
+        conn = sqlite3.connect('database.db')
+        c = conn.cursor()
+        c.execute("SELECT * FROM ingredients WHERE id = ?", (id,))
+        ingredients = c.fetchall()
+        conn.commit()
+        conn.close()
+
+        return  IngredientService.dataToObjects(ingredients)[0]
+
+    @staticmethod
     def findByMealId(mealId):
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
@@ -27,11 +38,7 @@ class IngredientService:
         conn.commit()
         conn.close()
 
-        ingredientObjs = []
-        for ingredient in ingredients:
-            ingredientObjs.append(Ingredient(ingredient[1], ingredient[2], ingredient[0]))
-
-        return  ingredientObjs
+        return  IngredientService.dataToObjects(ingredients)
 
     @staticmethod
     def save(ingredient):
@@ -42,3 +49,11 @@ class IngredientService:
                 ingredient.id = c.lastrowid
                 conn.commit()
                 conn.close()
+
+    @staticmethod
+    def dataToObjects(ingredientsData):
+        ingredientObjs = []
+        for ingredient in ingredientsData:
+            ingredientObjs.append(Ingredient(ingredient[1], ingredient[2], ingredient[0]))
+
+        return ingredientObjs
